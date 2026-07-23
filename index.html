@@ -1,95 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pet Peptides - High-quality peptide supplements for pet health and wellness">
-    <meta name="keywords" content="pet peptides, pet health, peptide supplements, animal wellness">
-    <meta name="author" content="Pet Peptides">
-    <meta name="theme-color" content="#2c3e50">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Pet Peptides">
-    <meta property="og:description" content="High-quality peptide supplements for pet health and wellness">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://petpeptides.com">
-    
-    <title>Pet Peptides - Premium Peptide Supplements for Pets</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PetPeptides.blog — science-backed canine wellness, mobility, recovery, and longevity." />
+  <title>PetPeptides.blog | Coming Soon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --orange: #ff5a00;
+      --orange-dark: #ef3f00;
+      --orange-soft: #fff3eb;
+      --ink: #111111;
+      --muted: #666666;
+      --line: #e7e7e7;
+      --white: #ffffff;
+      --panel: #fafafa;
+      --shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.5;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 34px;
+      padding: 11px 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .topbar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .topbar-icon {
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 196, 122, 0.45), transparent 28%),
+        linear-gradient(135deg, #ff821c 0%, var(--orange) 48%, var(--orange-dark) 100%);
+      color: var(--white);
+      padding: 56px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 530px;
+      overflow: hidden;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.36), transparent 36%),
+        rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 26px 70px rgba(117, 34, 0, 0.25);
+    }
+
+    .dog-labels {
+      position: absolute;
+      z-index: 2;
+      inset: 28px 24px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+    }
+
+    .dog-labels span {
+      position: relative;
+    }
+
+    .dog-labels span::after {
+      content: "";
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      width: 1px;
+      height: 26px;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .dogs-wrap {
+      position: absolute;
+      inset: 72px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: end;
+      gap: 0;
+      padding: 0 18px 0;
+    }
+
+    .dog {
+      align-self: end;
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: drop-shadow(0 20px 22px rgba(0,0,0,.25));
+    }
+
+    .hero-copy {
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,.9);
+      border-radius: 16px;
+      font-size: 1.55rem;
+    }
+
+    .coming {
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(4.7rem, 8vw, 7.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .tagline {
+      font-size: clamp(1.4rem, 2.7vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1.18;
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+
+    .benefit-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 30px 0;
+    }
+
+    .benefit {
+      text-align: center;
+    }
+
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 0.78rem;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .signup {
+      display: flex;
+      margin-top: 28px;
+      max-width: 620px;
+      background: var(--white);
+      border-radius: 999px;
+      padding: 5px;
+      box-shadow: 0 14px 34px rgba(128, 32, 0, 0.22);
+    }
+
+    .signup input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      padding: 0 20px;
+      color: var(--ink);
+      min-width: 0;
+      background: transparent;
+    }
+
+    .signup button {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 28px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .privacy {
+      margin-top: 11px;
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    .trust-strip {
+      padding: 34px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+    }
+
+    .trust-card {
+      text-align: center;
+      padding: 12px 8px;
+    }
+
+    .trust-icon {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--orange-soft);
+      color: var(--orange);
+      font-size: 1.9rem;
+    }
+
+    .trust-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .trust-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .content {
+      padding: 58px 0;
+      background: var(--white);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: stretch;
+    }
+
+    .science-card,
+    .notify-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .science-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: end;
+      min-height: 440px;
+    }
+
+    .science-copy {
+      padding: 34px 20px 34px 34px;
+    }
+
+    .science-copy h2,
+    .notify-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .science-copy p,
+    .notify-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .check::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .science-dog {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      background: var(--orange-soft);
+    }
+
+    .notify-card {
+      padding: 34px;
+    }
+
+    .proof {
+      color: var(--orange);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .option {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--white);
+    }
+
+    .option.active {
+      border: 2px solid var(--orange);
+      background: #fffaf6;
+    }
+
+    .radio {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #bbb;
+      border-radius: 50%;
+    }
+
+    .active .radio {
+      border-color: var(--orange);
+      box-shadow: inset 0 0 0 5px var(--white);
+      background: var(--orange);
+    }
+
+    .option strong {
+      display: block;
+    }
+
+    .option small {
+      color: var(--muted);
+    }
+
+    .price {
+      text-align: right;
+      font-weight: 800;
+    }
+
+    .launch-btn {
+      width: 100%;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .security {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .testimonials {
+      padding: 0 0 58px;
+    }
+
+    .testimonials h2 {
+      margin-bottom: 20px;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: var(--white);
+    }
+
+    .stars {
+      color: var(--orange);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .testimonial p {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .testimonial strong {
+      font-size: 0.85rem;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card {
+        order: 2;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        gap: 12px;
+        justify-content: space-between;
+        font-size: 0.72rem;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .coming {
+        font-size: 4.4rem;
+      }
+
+      .benefit-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .signup {
+        flex-direction: column;
+        border-radius: 18px;
+      }
+
+      .signup input {
+        min-height: 52px;
+      }
+
+      .signup button {
+        border-radius: 14px;
+      }
+
+      .trust-grid,
+      .testimonial-grid,
+      .science-card {
+        grid-template-columns: 1fr;
+      }
+
+      .science-dog {
+        height: 300px;
+      }
+
+      .dogs-wrap {
+        padding: 0 4px;
+      }
+
+      .dog {
+        height: 390px;
+      }
+
+      .visual-card {
+        min-height: 480px;
+      }
+
+      .dog-labels {
+        inset-inline: 8px;
+        font-size: 0.72rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <h1><span class="logo">Pet Peptides</span></h1>
+  <div class="topbar">
+    <div class="shell topbar-inner">
+      <div class="topbar-item"><span class="topbar-icon">●</span> Science-Backed</div>
+      <div class="topbar-item"><span class="topbar-icon">★</span> Built for Dogs</div>
+      <div class="topbar-item"><span class="topbar-icon">↻</span> Better Lives</div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div class="visual-card">
+        <div class="dog-labels">
+          <span>COREY</span>
+          <span>RYAN</span>
+          <span>SIDNEY</span>
+        </div>
+
+        <div class="dogs-wrap">
+          <img class="dog" src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=90" alt="Corey">
+          <img class="dog" src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=900&q=90" alt="Ryan">
+          <img class="dog" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=90" alt="Sidney">
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="brand">
+          <div class="brand-mark">🐾</div>
+          <div>PetPeptides.blog</div>
+        </div>
+
+        <h1 class="coming">Coming Soon</h1>
+
+        <p class="tagline">
+          Science. Longevity.<br>
+          Better Lives for Dogs.
+        </p>
+
+        <div class="benefit-row">
+          <div class="benefit">
+            <div class="benefit-icon">⚗</div>
+            <strong>Science<br>Backed</strong>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">✚</div>
+            <strong>Vet<br>Focused</strong>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">🐾</div>
+            <strong>Made for<br>Dogs</strong>
+          </div>
+
+          <div class="benefit">
+            <div class="benefit-icon">◆</div>
+            <strong>Better<br>Lives</strong>
+          </div>
+        </div>
+
+        <form class="signup" id="hero-form">
+          <input type="email" id="hero-email" placeholder="Enter your email" required>
+          <button type="submit">NOTIFY ME</button>
+        </form>
+
+        <div class="privacy" id="hero-message">🔒 No spam. Unsubscribe anytime.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="shell trust-grid">
+      <article class="trust-card">
+        <div class="trust-icon">🔬</div>
+        <h3>Science First</h3>
+        <p>Research-backed information you can trust.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon">✚</div>
+        <h3>Vet Focused</h3>
+        <p>Created with veterinary insight and expertise.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon">◆</div>
+        <h3>Better Lives</h3>
+        <p>Supporting mobility, recovery, and long-term wellness.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon">🐾</div>
+        <h3>Made for Dogs</h3>
+        <p>Everything we share is focused on dogs and their health.</p>
+      </article>
+
+      <article class="trust-card">
+        <div class="trust-icon">👥</div>
+        <h3>Pet Parent Community</h3>
+        <p>Building a community that cares as much as you do.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="shell content-grid">
+      <article class="science-card">
+        <div class="science-copy">
+          <h2>The Science of Better Lives</h2>
+          <p>
+            PetPeptides.blog is being built as a clear, accessible resource for
+            peptide research, canine wellness, mobility, recovery, and longevity.
+          </p>
+
+          <div class="checklist">
+            <div class="check">Evidence-based research</div>
+            <div class="check">Veterinary-reviewed education</div>
+            <div class="check">Focused on canine health</div>
+            <div class="check">Built for longer, healthier lives</div>
+          </div>
+        </div>
+
+        <img
+          class="science-dog"
+          src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=90"
+          alt="Happy golden retriever"
+        >
+      </article>
+
+      <article class="notify-card">
+        <div class="proof">★★★★★ 4.8 Early Community Interest</div>
+        <h2>Be the first to know when we launch</h2>
+        <p>
+          Join the PetPeptides.blog early-access list for updates, launch news,
+          and upcoming canine wellness research.
+        </p>
+
+        <div class="option-list">
+          <div class="option active">
+            <div class="radio"></div>
+            <div>
+              <strong>Launch Updates</strong>
+              <small>Major site and content announcements</small>
             </div>
-            <nav class="navbar-menu">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            <div class="price">Free</div>
+          </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2>Premium Peptide Supplements for Your Pet</h2>
-            <p>Science-backed peptide formulations designed to support your pet's health, vitality, and longevity.</p>
-            <a href="#contact" class="cta-button">Get Started</a>
-        </div>
-    </section>
+          <div class="option">
+            <div class="radio"></div>
+            <div>
+              <strong>Research Digest</strong>
+              <small>Plain-English summaries of emerging studies</small>
+            </div>
+            <div class="price">Soon</div>
+          </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h3>About Pet Peptides</h3>
-            <p>We specialize in high-quality, bioavailable peptide supplements that support optimal health in pets. Our formulations are backed by research and designed for maximum effectiveness.</p>
+          <div class="option">
+            <div class="radio"></div>
+            <div>
+              <strong>Pet Parent Guides</strong>
+              <small>Practical educational resources</small>
+            </div>
+            <div class="price">Soon</div>
+          </div>
         </div>
-    </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="container">
-            <h3>Our Products</h3>
-            <p>Coming soon - premium peptide formulations for pet wellness.</p>
+        <button class="launch-btn" id="launch-button">NOTIFY ME WHEN WE LAUNCH</button>
+
+        <div class="security">
+          <span>🔒 Secure & Private</span>
+          <span>✉ Important Updates Only</span>
+          <span>↻ Unsubscribe Anytime</span>
         </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits">
-        <div class="container">
-            <h3>Benefits</h3>
-            <ul>
-                <li>Joint and mobility support</li>
-                <li>Immune system enhancement</li>
-                <li>Cellular repair and regeneration</li>
-                <li>Improved coat and skin health</li>
-                <li>Energy and vitality support</li>
-            </ul>
-        </div>
-    </section>
+  <section class="testimonials">
+    <div class="shell">
+      <h2>Loved by Pet Parents</h2>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h3>Get in Touch</h3>
-            <p>Have questions? We'd love to hear from you.</p>
-            <p>Email: <a href="mailto:info@petpeptides.com">info@petpeptides.com</a></p>
-        </div>
-    </section>
+      <div class="testimonial-grid">
+        <article class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"I can't wait to see what PetPeptides.blog brings. The research focus looks incredibly useful."</p>
+          <strong>Daniel R.</strong>
+        </article>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Pet Peptides. All rights reserved.</p>
-        </div>
-    </footer>
+        <article class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"Finally, a resource that focuses on real science and our dogs' health."</p>
+          <strong>Amanda T.</strong>
+        </article>
 
-    <script src="js/script.js"></script>
+        <article class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"The future of canine wellness needs more clear, responsible education like this."</p>
+          <strong>Dr. Michael S.</strong>
+        </article>
+
+        <article class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"More knowledge. Better choices. Better lives for our pups."</p>
+          <strong>Jessica L.</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 PetPeptides.blog. Educational information only.
+  </footer>
+
+  <script>
+    const heroForm = document.getElementById("hero-form");
+    const heroMessage = document.getElementById("hero-message");
+    const launchButton = document.getElementById("launch-button");
+
+    heroForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const email = document.getElementById("hero-email").value.trim();
+
+      if (!email) {
+        heroMessage.textContent = "Please enter a valid email address.";
+        return;
+      }
+
+      heroMessage.textContent = "You're on the launch list. Thank you.";
+      heroForm.reset();
+    });
+
+    launchButton.addEventListener("click", function () {
+      document.getElementById("hero-email").focus();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
